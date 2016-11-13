@@ -344,10 +344,15 @@ def projective(system_val):
     print
     print('Detailed learning projections:')
     print('<curve-id> : {<details>}')
-    print()
+    print
     for keys in correlation_data:
         print(str(keys) +":"+str(correlation_data[keys]))
     print("-----------------------------------------------")
+
+    correlations = [[key, correlation_data[key]['correlation']] for key in correlation_data]
+    correlated_curve = max(correlations, key=lambda x:x[1])[0]
+    print ">>>> ", system_val, correlation_data[correlated_curve]['optimal sample size']
+
  
 def main():           
     if system=='all':
